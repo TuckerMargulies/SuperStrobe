@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Echo</title>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/normalize/3.0.1/normalize.min.css">
+    <script src="/primus/primus.js"></script>
+    <style>
+        body {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        button {
+            outline: 0;
+            width: 100vw;
+            height: 100vh;
+            border: 0;
+            background: #444;
+            color: #FFF;
+        }
+        button.down {
+            background: white;
+        }
+    </style>
+</head>
+<body>
+<script>
+    var output = document.getElementById('output')
+            , echo = document.getElementById('echo');
+    var primus = new Primus();
+    primus.on('data', function received(data) {
+        if( data == 1 )
+            document.getElementById('button').className = 'down';
+        else
+            document.getElementById('button').className = '';
+    });
+    down = function () {
+        primus.write(1);
+    };
+    up = function () {
+        primus.write(0);
+    };
+</script>
+<button id="button" onmousedown="down();" onmouseup="up();">Go</button>
+</body>
+</html>
