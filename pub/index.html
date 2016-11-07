@@ -26,8 +26,7 @@
 </head>
 <body>
 <script>
-    var output = document.getElementById('output')
-            , echo = document.getElementById('echo');
+    var output = document.getElementById('output');
     var primus = new Primus();
     primus.on('data', function received(data) {
         if( data == 1 )
