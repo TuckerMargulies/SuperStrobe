@@ -10,17 +10,45 @@
             margin: 0px;
             padding: 0px;
         }
-
         button {
             outline: 0;
-            width: 100vw;
-            height: 100vh;
+            width: 50vw;
+            height: 50vh;
             border: 0;
             background: #444;
             color: #FFF;
+          }
+        #button0{
+            position: fixed;
+            right: 50%;
+            top: 0;
+          }
+        #button1 {
+            position: fixed;
+            left: 50%;
+            top: 0;
         }
-        button.down {
+        #button2 {
+            position: fixed;
+            right: 50%;
+            bottom: 0;
+        }
+        #button3 {
+            position: fixed;
+            left: 50%;
+            bottom: 0;
+        }
+        #button0.down {
             background: white;
+        }
+        #button1.down {
+            background: red;
+        }
+        #button2.down {
+            background: green;
+        }
+        #button3.down {
+            background: blue;
         }
     </style>
 </head>
@@ -29,18 +57,22 @@
     var output = document.getElementById('output');
     var primus = new Primus();
     primus.on('data', function received(data) {
-        if( data == 1 )
-            document.getElementById('button').className = 'down';
-        else
-            document.getElementById('button').className = '';
+      var newClass;
+        if( data[1] == 1 )
+          newClass = 'down';
+        document.getElementById('button' + data[0]).className = newClass;
+
     });
-    down = function () {
-        primus.write(1);
+    down = function (index) {
+        primus.write([index, 1]);
     };
-    up = function () {
-        primus.write(0);
+    up = function (index) {
+        primus.write([index,0]);
     };
 </script>
-<button id="button" ontouchstart="down();" ontouchend="up();">Go</button>
+<button id="button0" onmousedown="down(0);" onmouseup="up(0);">Go</button>
+<button id="button1" onmousedown="down(1);" onmouseup="up(1);">Go</button>
+<button id="button2" onmousedown="down(2);" onmouseup="up(2);">Go</button>
+<button id="button3" onmousedown="down(3);" onmouseup="up(3);">Go</button>
 </body>
 </html>
