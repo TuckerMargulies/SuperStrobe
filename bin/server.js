@@ -1,6 +1,6 @@
 import Primus from 'primus';
 import http from 'http';
-var PORT = process.env.PORT || 8080,
+var PORT = process.env.PORT || 8080
 
 let server = http.createServer((req,res) => {
   res.setHeader('Content-Type', 'text/html');
