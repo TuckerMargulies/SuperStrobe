@@ -7,6 +7,11 @@
     <link rel="stylesheet" href="style.css">
     <script src="/primus/primus.js"></script>
     <style>
+        img {
+          height: 10em;
+
+        }
+
         body {
             margin: 0px;
             padding: 0px;
@@ -71,9 +76,9 @@
         primus.write([index,0]);
     };
 </script>
-<button id="button0" onmousedown="down(0);" onmouseup="up(0);">Go</button>
-<button id="button1" onmousedown="down(1);" onmouseup="up(1);">Go</button>
-<button id="button2" onmousedown="down(2);" onmouseup="up(2);">Go</button>
-<button id="button3" onmousedown="down(3);" onmouseup="up(3);">Go</button>
+<button id="button0" onmousedown="down(0);" onmouseup="up(0);"><img src="white.png"></button>
+<button id="button1" onmousedown="down(1);" onmouseup="up(1);"><img src="pink.png"></button>
+<button id="button2" onmousedown="down(2);" onmouseup="up(2);"><img src="green.png"></button>
+<button id="button3" onmousedown="down(3);" onmouseup="up(3);"><img src="blue.png"></button>
 </body>
 </html>
