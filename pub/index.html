@@ -7,9 +7,12 @@
     <link rel="stylesheet" href="style.css">
     <script src="/primus/primus.js"></script>
     <style>
-        img {
-          height: 10em;
+      .mainlogo{
+        height: 10em;
+      }
 
+      .buttonicon {
+          height: 10em;
         }
 
         body {
@@ -76,9 +79,10 @@
         primus.write([index,0]);
     };
 </script>
-<button id="button0" onmousedown="down(0);" onmouseup="up(0);"><img src="white.png"></button>
-<button id="button1" onmousedown="down(1);" onmouseup="up(1);"><img src="pink.png"></button>
-<button id="button2" onmousedown="down(2);" onmouseup="up(2);"><img src="green.png"></button>
-<button id="button3" onmousedown="down(3);" onmouseup="up(3);"><img src="blue.png"></button>
+<div><img class="buttonicon" src="http://i.imgur.com/Wq6DVbo.png"> </div>
+<button id="button0" onmousedown="down(0);" onmouseup="up(0);"><img class="buttonicon" src="http://i.imgur.com/Wq6DVbo.png"></button>
+<button id="button1" onmousedown="down(1);" onmouseup="up(1);"><img class="buttonicon" src="http://i.imgur.com/8L8nZUn.png"></button>
+<button id="button2" onmousedown="down(2);" onmouseup="up(2);"><img class="buttonicon" src="http://i.imgur.com/HtDPsg1.png"></button>
+<button id="button3" onmousedown="down(3);" onmouseup="up(3);"><img class="buttonicon" src="http://i.imgur.com/d9ablZe.png"></button>
 </body>
 </html>
