@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Echo</title>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/normalize/3.0.1/normalize.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="/primus/primus.js"></script>
+    <style>
+
+        
+    </style>
+</head>
+
+<body>
+<script>
+    var output = document.getElementById('output');
+    var primus = new Primus();
+    primus.on('data', function received(data) {
+      var newClass;
+        if( data[1] == 1 )
+          newClass = 'down';
+        document.getElementById('button' + data[0]).className = newClass;
+
+    });
+    down = function (index) {
+        primus.write([index, 1]);
+    };
+    up = function (index) {
+        primus.write([index,0]);
+    };
+</script>
+<button id="button0" onmousedown="down(0);" onmouseup="up(0);"><img class="buttonicon" src="http://i.imgur.com/Wq6DVbo.png"></button>
+<button id="button1" onmousedown="down(1);" onmouseup="up(1);"><img class="buttonicon" src="http://i.imgur.com/8L8nZUn.png"></button>
+<button id="button2" onmousedown="down(2);" onmouseup="up(2);"><img class="buttonicon" src="http://i.imgur.com/HtDPsg1.png"></button>
+<button id="button3" onmousedown="down(3);" onmouseup="up(3);"><img class="buttonicon" src="http://i.imgur.com/d9ablZe.png"></button>
+</body>
+</html>
