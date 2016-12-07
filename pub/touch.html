@@ -67,6 +67,25 @@
 
 <body>
 <script>
+(function($) {
+  var IS_IOS = /iphone|ipad/i.test(navigator.userAgent);
+  $.fn.nodoubletapzoom = function() {
+    if (IS_IOS)
+      $(this).bind('touchstart', function preventZoom(e) {
+        var t2 = e.timeStamp
+          , t1 = $(this).data('lastTouch') || t2
+          , dt = t2 - t1
+          , fingers = e.originalEvent.touches.length;
+        $(this).data('lastTouch', t2);
+        if (!dt || dt > 500 || fingers > 1) return; // not double-tap
+
+        e.preventDefault(); // double tap - prevent the zoom
+        // also synthesize click events we just swallowed up
+        $(this).trigger('click').trigger('click');
+      });
+  };
+});
+
     var output = document.getElementById('output');
     var primus = new Primus();
     primus.on('data', function received(data) {
@@ -82,6 +101,7 @@
     up = function (index) {
         primus.write([index,0]);
     };
+
 </script>
 <button id="button0" ontouchstart="down(0);" ontouchend="up(0);"><img class="buttonicon" src="http://i.imgur.com/Wq6DVbo.png"></button>
 <button id="button1" ontouchstart="down(1);" ontouchend="up(1);"><img class="buttonicon" src="http://i.imgur.com/8L8nZUn.png"></button>
